@@ -1,0 +1,47 @@
+<!doctype html>
+<!--[if lt IE 9]><html class="ie8" lang="ja"><![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="ja"><!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" content="TD JS SDK Test">
+    <title>TD Javascript Sample</title>
+    <script type="text/javascript">
+        !function(t,e){if(void 0===e[t]){e[t]=function(){e[t].clients.push(this),this._init=[Array.prototype.slice.call(arguments)]},e[t].clients=[];for(var r=function(t){return function(){return this["_"+t]=this["_"+t]||[],this["_"+t].push(Array.prototype.slice.call(arguments)),this}},s=["addRecord","set","trackEvent","trackPageview","ready"],n=0;n<s.length;n++){var i=s[n];e[t].prototype[i]=r(i)}var a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src=("https:"===document.location.protocol?"https:":"http:")+"//s3.amazonaws.com/td-cdn/sdk/td-1.2.0.js";var c=document.getElementsByTagName("script")[0];c.parentNode.insertBefore(a,c)}}("Treasure",this); /* JavaScript SDK の読み込み*/
+    </script>
+</head>
+<body data-category="top">
+<div id="user_info">
+    <div id="user_mail">
+        yamada@example.com
+    </div>
+    <div id="user_name">
+        yamada
+    </div>
+    <div id="link">
+        <a href="/sub.html">sub.html</a>
+    </div>
+</div>
+<!-- TD JS SDK Start -->
+<script type="text/javascript">
+    /* TreasureData Instance 作成 */
+    var td = new Treasure({
+        host: 'in.treasuredata.com', /* エンドポイントの指定 */
+        database: 'demover1', /* データベースの指定 */
+        writeKey: '5990/1195b2b8421ed7650a3a34173b5d13c73fee9ada' /* WriteOnly API-Keyの指定 */
+    });
+    /* Get Data */
+    var user_mail = document.getElementById('user_mail');
+    var user_name = document.getElementById('user_name');
+    var user = {
+        id: user_mail.innerText,
+        name: user_name.innerText,
+    } /* データの設定 */
+    td.trackEvent('html_data', user); /* データの送信 */
+    console.log(user)
+</script>
+<!-- TD JS SDK End -->
+</body>
+</html>
